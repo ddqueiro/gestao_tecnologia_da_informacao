@@ -3,6 +3,8 @@
 
 Este projeto é um estudo de caso que aplica regressão linear e conceitos de matemática aplicada à ciência de dados para resolver um problema realista de previsão de vendas na empresa fictícia Wave Surfboards, especializada na fabricação e comercialização de pranchas de surf. O projeto foi desenvolvido para a disciplina Applied Math for Data Science.
 
+*Para uma análise detalhada da metodologia, dos resultados e das conclusões, consulte o relatório completo disponível no arquivo `estudo_de_caso_wave.pdf`*.
+
 
 ---
 
@@ -127,3 +129,23 @@ A adoção do modelo preditivo baseado em regressão linear traz impactos positi
 - Pode ser expandido futuramente com técnicas de machine learning (ex: árvores de decisão ou redes neurais).
 
 ---
+## 📂 Como Executar:
+
+### 1. Clone o repositório:
+
+```bash
+git clone https://github.com/ddqueiro/gestao_tecnologia_da_informacao.git
+```
+
+### 2. Instale as dependências:
+
+```bash
+
+pip install numpy pandas scipy matplotlib scikit-learn
+```
+
+### 3. Execute o notebook:
+
+```bash
+jupyter notebook regresão_linear_wave_surfboard.ipynb
+```
