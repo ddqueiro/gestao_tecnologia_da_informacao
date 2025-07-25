@@ -24,10 +24,10 @@ Este projeto foi desenvolvido como parte da disciplina **Data Science Fundamenta
 
 ## 📁 Estrutura do Projeto
 
-📦 analise-dados-ambientais
-├── análise_de_dados_ambientais.ipynb       # Código-fonte com a análise
-├── relatorio_analise_dados_ambientais.pdf  # Relatório técnico completo
-├── README.md                               # Este arquivo
+📦 analise-dados-ambientais<br>
+├── análise_de_dados_ambientais.ipynb       *#Código-fonte com a análise <br>*
+├── relatorio_analise_dados_ambientais.pdf  *#Relatório técnico completo*<br>
+├── README.md                        *#Este arquivo*
 
 
 ## 🔍 Etapas da Análise
