@@ -27,9 +27,9 @@ O projeto se baseia em conceitos essenciais da Segurança da Informação:
 * **Diferenças entre Dados e Informação:** Compreensão da distinção e importância de cada um.
 * **Importância da Proteção de Dados:** A relevância da segurança da informação como ativo fundamental.
 * **Princípios da Segurança da Informação (Tríade CIA):**
-    * **Confidencialidade:** Proteger informações contra acesso não autorizado.
-    * **Integridade:** Garantir a precisão e completeza das informações e métodos de processamento.
-    * **Disponibilidade:** Assegurar que usuários autorizados tenham acesso à informação e aos ativos relacionados quando necessário.
+    ***Confidencialidade:** Proteger informações contra acesso não autorizado.
+    ***Integridade:** Garantir a precisão e completeza das informações e métodos de processamento.
+    ***Disponibilidade:** Assegurar que usuários autorizados tenham acesso à informação e aos ativos relacionados quando necessário.
 
 ## Ameaças e Ataques
 
@@ -90,4 +90,5 @@ Este projeto foi uma experiência valiosa que reforçou a importancia da  segura
 Basta clicar no arquivo `segurança_cibernetica.pdf` neste repositório para visualizar o projeto completo.
 
 ## Sugestões
-Para qualquer sugestão, por favor, entre em contato! 
+
+Para qualquer sugestão, por favor, entre em contato!
