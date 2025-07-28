@@ -1,0 +1,6 @@
+streamlit
+pymongo
+bson
+pandas
+cryptography
+python-dotenv
