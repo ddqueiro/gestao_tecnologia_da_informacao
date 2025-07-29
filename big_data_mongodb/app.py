@@ -1,4 +1,3 @@
-# app.py
 import streamlit as st
 from pymongo import MongoClient
 from bson import ObjectId
@@ -8,9 +7,15 @@ from cryptography.fernet import Fernet
 from dotenv import load_dotenv
 
 # --- Carrega variáveis de ambiente ---
-load_dotenv()
-MONGO_URI = os.getenv("MONGO_URI", "mongodb://admin:1234@localhost:27017/eshop_brasil?authSource=admin")
-CRYPTO_KEY = os.getenv("CRYPTO_KEY") or Fernet.generate_key().decode()
+load_dotenv('sensivel.env')
+MONGO_URI = os.getenv("MONGO_URI")
+CRYPTO_KEY = os.getenv("CRYPTO_KEY")
+
+if not MONGO_URI:
+    raise ValueError("MONGO_URI não definida no ambiente")
+if not CRYPTO_KEY:
+    raise ValueError("CRYPTO_KEY não definida no ambiente")
+
 fernet = Fernet(CRYPTO_KEY.encode())
 
 # --- Inicializa sessão ---
@@ -29,218 +34,271 @@ def login():
         else:
             st.error("Usuário ou senha inválidos")
 
-# --- Controle de autenticação ---
-if not st.session_state['authenticated']:
-    login()
-    st.stop()
-
-# --- Conexão MongoDB ---
-client = MongoClient(MONGO_URI)
-db = client["eshop_brasil"]
-clientes = db["clientes"]
-
-
-# --- Funções auxiliares ---
-def criptografar(texto):
-    return fernet.encrypt(texto.encode()).decode()
-
-def descriptografar(texto):
-    return fernet.decrypt(texto.encode()).decode()
-
-# --- CRUD ---
-def inserir_cliente(dados):
-    dados["email"] = criptografar(dados["email"])
-    return clientes.insert_one(dados)
-
-def inserir_clientes(lista_dados):
-    for d in lista_dados:
-        d["email"] = criptografar(d["email"])
-    return clientes.insert_many(lista_dados)
-
-def listar_clientes():
-    dados = list(clientes.find())
-    for d in dados:
-        try:
-            d["email"] = descriptografar(d["email"])
-        except:
-            d["email"] = "[Erro de descriptografia]"
-    return dados
-
-def atualizar_cliente(id_str, novos_dados):
-    try:
-        _id = ObjectId(id_str)
-        novos_dados["email"] = criptografar(novos_dados["email"])
-    except Exception:
-        st.error("ID inválido!")
-        return
-    return clientes.update_one({"_id": _id}, {"$set": novos_dados})
-
-def deletar_cliente(id_str):
-    try:
-        _id = ObjectId(id_str)
-    except Exception:
-        st.error("ID inválido!")
-        return
-    return clientes.delete_one({"_id": _id})
-
-
-# --- Interface Streamlit ---
-st.title("E-Shop Brasil - Gestão de Clientes")
-
+# --- Logout ---
 def logout():
     st.session_state['authenticated'] = False
     st.rerun()
 
-if st.sidebar.button("Sair"):
-    logout()
+# --- Conexão MongoDB ---
+client = MongoClient(MONGO_URI)
+db = client["eshop_brasil"]
 
-menu = st.sidebar.selectbox("Menu", ["Inserir", "Visualizar", "Editar", "Excluir", "Buscar"])
+# --- Criptografia ---
+def criptografar(texto):
+    return fernet.encrypt(texto.encode()).decode()
 
+def descriptografar(texto):
+    try:
+        return fernet.decrypt(texto.encode()).decode()
+    except Exception:
+        return "[Erro de descriptografia]"
 
+# --- CRUD CLIENTES ---
+clientes = db["clientes"]
 
-if menu == "Inserir":
-    st.header("Inserir novo cliente")
-    with st.form("form_inserir"):
-            nome = st.text_input("Nome")
+def inserir_cliente(dados):
+    dados["email"] = criptografar(dados["email"])
+    return clientes.insert_one(dados)
+
+def listar_clientes(filtros=None, page=1, page_size=20):
+    query = filtros or {}
+    skip = (page - 1) * page_size
+    cursor = clientes.find(query).skip(skip).limit(page_size)
+    docs = list(cursor)
+    for d in docs:
+        d["email"] = descriptografar(d.get("email", "")) if d.get("email") else ""
+        d["_id"] = str(d["_id"])
+    total = clientes.count_documents(query)
+    return docs, total
+
+# --- CRUD PRODUTOS ---
+produtos = db["produtos"]
+
+def inserir_produto(dados):
+    return produtos.insert_one(dados)
+
+def listar_produtos(filtros=None, page=1, page_size=20):
+    query = filtros or {}
+    skip = (page - 1) * page_size
+    cursor = produtos.find(query).skip(skip).limit(page_size)
+    docs = list(cursor)
+    for d in docs:
+        d["_id"] = str(d["_id"])
+    total = produtos.count_documents(query)
+    return docs, total
+
+def atualizar_estoque_produto(produto_id, nova_quantidade):
+    try:
+        produtos.update_one({"_id": ObjectId(produto_id)}, {"$set": {"estoque": nova_quantidade}})
+        return True
+    except Exception as e:
+        st.error(f"Erro ao atualizar estoque: {str(e)}")
+        return False
+
+# --- Telas ---
+def dashboard_tela():
+    st.title("Dashboard")
+    st.write("Bem-vindo ao ERP da E-Shop Brasil!")
+
+    total_clientes = clientes.count_documents({})
+    total_produtos = produtos.count_documents({})
+
+    produtos_list = list(produtos.find({}))
+
+    estoque_total = 0
+    valor_faturado = 0.0
+
+    for prod in produtos_list:
+        estoque = prod.get("estoque", 0)
+        preco = prod.get("preco", 0.0)
+        estoque_total += estoque
+        valor_faturado += estoque * preco
+
+    col1, col2 = st.columns(2)
+    col1.metric("Total de Clientes", total_clientes)
+    col2.metric("Total de Produtos", total_produtos)
+
+    col3, col4 = st.columns(2)
+    col3.metric("Estoque Total", estoque_total)
+    col4.metric("Valor Faturado (R$)", f"{valor_faturado:.2f}")
+
+def clientes_tela():
+    st.title("Clientes")
+    menu = st.radio("Ações", ["Inserir", "Visualizar / Editar / Deletar"], horizontal=True)
+
+    if menu == "Inserir":
+        with st.form("form_inserir_cliente"):
+            nome = st.text_input("Nome Completo")
             email = st.text_input("Email")
             cidade = st.text_input("Cidade")
-            produto = st.selectbox("Produto", ["Notebook", "Celular", "Tênis", "Livro", "Fone"])
-            valor = st.number_input("Valor (R$)", min_value=0.0, format="%.2f")
             submit = st.form_submit_button("Salvar")
             if submit:
                 if nome and email and cidade:
-                    doc = {"nome": nome, "email": email, "cidade": cidade, "produto": produto, "valor": valor}
+                    doc = {"nome": nome, "email": email, "cidade": cidade}
                     inserir_cliente(doc)
                     st.success("Cliente inserido com sucesso!")
                 else:
-                    st.error("Preencha todos os campos!")
+                    st.error("Preencha todos os campos.")
+
+    elif menu == "Visualizar / Editar / Deletar":
+        st.subheader("Buscar clientes")
+        termo_busca = st.text_input("Buscar por nome, email ou cidade")
+
+        # Monta o filtro
+        filtros = {}
+        if termo_busca:
+            filtros = {
+                "$or": [
+                    {"nome": {"$regex": termo_busca, "$options": "i"}},
+                    {"email": {"$regex": termo_busca, "$options": "i"}},
+                    {"cidade": {"$regex": termo_busca, "$options": "i"}},
+                ]
+            }
+
+        page = st.number_input("Página", min_value=1, value=1)
+        clientes_list, total = listar_clientes(filtros=filtros, page=page)
+        st.write(f"Total de clientes encontrados: {total}")
+
+        if clientes_list:
+            for cliente in clientes_list:
+                with st.expander(f"{cliente['nome']} - {cliente['cidade']}"):
+                    with st.form(f"form_editar_{cliente['_id']}"):
+                        nome_edit = st.text_input("Nome", value=cliente["nome"])
+                        email_edit = st.text_input("Email", value=cliente["email"])
+                        cidade_edit = st.text_input("Cidade", value=cliente["cidade"])
+                        col1, col2 = st.columns(2)
+                        salvar = col1.form_submit_button("Salvar alterações")
+                        deletar = col2.form_submit_button("Deletar")
+
+                        if salvar:
+                            novos_dados = {
+                                "nome": nome_edit,
+                                "email": email_edit,
+                                "cidade": cidade_edit
+                            }
+                            atualizar_cliente(cliente["_id"], novos_dados)
+                            st.success("Cliente atualizado com sucesso!")
+                            st.experimental_rerun()
+
+                        if deletar:
+                            deletar_cliente(cliente["_id"])
+                            st.warning("Cliente deletado.")
+                            st.experimental_rerun()
+        else:
+            st.info("Nenhum cliente encontrado.")
 
 
-elif menu == "Visualizar":
-    st.header("Lista de clientes")
-    
-    if 'page_visualizar' not in st.session_state:
-        st.session_state.page_visualizar = 1
 
-    page_size = 50
-    total_docs = clientes.count_documents({})
-    total_pages = (total_docs // page_size) + (1 if total_docs % page_size > 0 else 0)
+    elif menu == "Visualizar":
+        page = st.number_input("Página", min_value=1, value=1)
+        clientes_list, total = listar_clientes(page=page)
+        st.write(f"Total de clientes: {total}")
+        if clientes_list:
+            df = pd.DataFrame(clientes_list)
+            st.dataframe(df)
+        else:
+            st.info("Nenhum cliente encontrado.")
 
-    col1, col2, col3 = st.columns([1,2,1])
-    with col1:
-        if st.button("Anterior") and st.session_state.page_visualizar > 1:
-            st.session_state.page_visualizar -= 1
-    with col3:
-        if st.button("Próximo") and st.session_state.page_visualizar < total_pages:
-            st.session_state.page_visualizar += 1
+def produtos_tela():
+    st.title("Produtos")
+    menu = st.radio("Ações", ["Inserir", "Visualizar"], horizontal=True)
 
-    st.write(f"Página {st.session_state.page_visualizar} de {total_pages} — Total clientes: {total_docs}")
-
-    skip_count = (st.session_state.page_visualizar - 1) * page_size
-    clientes_cursor = clientes.find().skip(skip_count).limit(page_size)
-    clientes_list = list(clientes_cursor)
-
-    for d in clientes_list:
-        try:
-            d["email"] = descriptografar(d["email"])
-        except:
-            d["email"] = "[Erro de descriptografia]"
-
-    if clientes_list:
-        df = pd.DataFrame(clientes_list)
-        df['_id'] = df['_id'].astype(str)
-        st.dataframe(df)
-    else:
-        st.info("Nenhum cliente encontrado.")
-
-
-elif menu == "Editar":
-    st.header("Editar cliente")
-    clientes_list = listar_clientes()
-    if clientes_list:
-        opcoes = {f"{c['nome']} - {c['_id']}": str(c['_id']) for c in clientes_list}
-        selecionado = st.selectbox("Escolha o cliente para editar", list(opcoes.keys()))
-        id_cliente = opcoes[selecionado]
-        cliente = clientes.find_one({"_id": ObjectId(id_cliente)})
-
-        with st.form("form_editar"):
-            nome = st.text_input("Nome", value=cliente.get("nome", ""))
-            email = st.text_input("Email", value=descriptografar(cliente.get("email", "")))
-            cidade = st.text_input("Cidade", value=cliente.get("cidade", ""))
-            produtos = ["Notebook", "Celular", "Tênis", "Livro", "Fone"]
-            produto_index = produtos.index(cliente.get("produto", "Notebook")) if cliente.get("produto") in produtos else 0
-            produto = st.selectbox("Produto", produtos, index=produto_index)
-            valor = st.number_input("Valor (R$)", min_value=0.0, format="%.2f", value=cliente.get("valor", 0.0))
-            submit = st.form_submit_button("Atualizar")
-
+    if menu == "Inserir":
+        with st.form("form_inserir_produto"):
+            nome = st.text_input("Nome do Produto")
+            descricao = st.text_area("Descrição")
+            preco = st.number_input("Preço (R$)", min_value=0.0, format="%.2f")
+            estoque_inicial = st.number_input("Estoque inicial", min_value=0, step=1)
+            submit = st.form_submit_button("Salvar")
             if submit:
-                if nome and email and cidade:
-                    novos_dados = {"nome": nome, "email": email, "cidade": cidade, "produto": produto, "valor": valor}
-                    atualizar_cliente(id_cliente, novos_dados)
-                    st.success("Cliente atualizado com sucesso!")
+                if nome and descricao:
+                    doc = {
+                        "nome": nome,
+                        "descricao": descricao,
+                        "preco": preco,
+                        "estoque": estoque_inicial
+                    }
+                    inserir_produto(doc)
+                    st.success("Produto inserido com sucesso!")
                 else:
-                    st.error("Por favor, preencha todos os campos obrigatórios!")
-    else:
-        st.info("Nenhum cliente para editar.")
+                    st.error("Preencha os campos obrigatórios.")
 
-elif menu == "Excluir":
-    st.header("Excluir cliente")
-    clientes_list = listar_clientes()
-    if clientes_list:
-        opcoes = {f"{c['nome']} - {c['_id']}": str(c['_id']) for c in clientes_list}
-        selecionado = st.selectbox("Escolha o cliente para excluir", list(opcoes.keys()))
-        id_cliente = opcoes[selecionado]
+    elif menu == "Visualizar":
+        page = st.number_input("Página", min_value=1, value=1)
+        produtos_list, total = listar_produtos(page=page)
+        st.write(f"Total de produtos: {total}")
+        if produtos_list:
+            df = pd.DataFrame(produtos_list)
+            st.dataframe(df)
+        else:
+            st.info("Nenhum produto encontrado.")
 
-        if st.button("Excluir"):
-            deletar_cliente(id_cliente)
-            st.warning("Cliente excluído com sucesso!")
-    else:
-        st.info("Nenhum cliente para excluir.")
+def estoque_tela():
+    st.title("Estoque")
 
-elif menu == "Buscar":
-    st.header("Buscar clientes")
-    nome_filtro = st.text_input("Filtrar por nome")
-    cidade_filtro = st.text_input("Filtrar por cidade")
-    produto_filtro = st.selectbox("Filtrar por produto", ["", "Notebook", "Celular", "Tênis", "Livro", "Fone"])
+    produtos_list, _ = listar_produtos(page=1, page_size=1000)
+    if not produtos_list:
+        st.info("Nenhum produto cadastrado.")
+        return
 
-    query = {}
-    if nome_filtro:
-        query["nome"] = {"$regex": nome_filtro, "$options": "i"}
-    if cidade_filtro:
-        query["cidade"] = {"$regex": cidade_filtro, "$options": "i"}
-    if produto_filtro:
-        query["produto"] = produto_filtro
+    # Agrupa os produtos por nome somando os estoques
+    df = pd.DataFrame(produtos_list)
+    df_agrupado = df.groupby("nome", as_index=False).agg({
+        "estoque": "sum",
+        "descricao": "first",
+        "preco": "mean"
+    }).rename(columns={"nome": "Produto", "estoque": "Estoque", "descricao": "Descrição", "preco": "Preço Médio (R$)"})
 
-    if 'page_buscar' not in st.session_state:
-        st.session_state.page_buscar = 1
+    st.subheader("Estoque Agrupado por Produto")
+    st.dataframe(df_agrupado)
 
-    page_size = 50
-    total_docs = clientes.count_documents(query)
-    total_pages = (total_docs // page_size) + (1 if total_docs % page_size > 0 else 0)
+    st.write("---")
+    st.subheader("Registrar movimentação de estoque")
 
-    col1, col2, col3 = st.columns([1,2,1])
-    with col1:
-        if st.button("Anterior") and st.session_state.page_buscar > 1:
-            st.session_state.page_buscar -= 1
-    with col3:
-        if st.button("Próximo") and st.session_state.page_buscar < total_pages:
-            st.session_state.page_buscar += 1
+    # Para movimentação vamos usar os produtos originais (não agrupados) para escolher por nome e ID
+    options = {f"{p['nome']} (Estoque atual: {p.get('estoque', 0)})": p['_id'] for p in produtos_list}
+    selecionado = st.selectbox("Produto", list(options.keys()))
+    produto_id = options[selecionado]
 
-    st.write(f"Página {st.session_state.page_buscar} de {total_pages} — Total clientes: {total_docs}")
+    tipo = st.selectbox("Tipo de movimentação", ["Entrada", "Saída"])
+    quantidade = st.number_input("Quantidade", min_value=1, step=1)
 
-    skip_count = (st.session_state.page_buscar - 1) * page_size
-    resultados_cursor = clientes.find(query).skip(skip_count).limit(page_size)
-    resultados = list(resultados_cursor)
+    if st.button("Registrar movimentação"):
+        produto = produtos.find_one({"_id": ObjectId(produto_id)})
+        if not produto:
+            st.error("Produto não encontrado.")
+            return
 
-    for r in resultados:
-        try:
-            r["email"] = descriptografar(r["email"])
-        except:
-            r["email"] = "[Erro de descriptografia]"
+        estoque_atual = produto.get("estoque", 0)
+        if tipo == "Entrada":
+            novo_estoque = estoque_atual + quantidade
+        else:
+            novo_estoque = estoque_atual - quantidade
+            if novo_estoque < 0:
+                st.error("Quantidade insuficiente em estoque para saída.")
+                return
 
-    if resultados:
-        df = pd.DataFrame(resultados)
-        df['_id'] = df['_id'].astype(str)
-        st.dataframe(df)
-    else:
-        st.info("Nenhum cliente encontrado com esses filtros.")
+        sucesso = atualizar_estoque_produto(produto_id, novo_estoque)
+        if sucesso:
+            st.success(f"Movimentação registrada! Estoque atualizado: {novo_estoque}")
+        else:
+            st.error("Falha ao atualizar estoque.")
+
+# --- Controle principal ---
+if not st.session_state['authenticated']:
+    login()
+    st.stop()
+
+st.sidebar.title("Menu")
+menu = st.sidebar.selectbox("Seção", ["Dashboard", "Clientes", "Produtos", "Estoque", "Sair"])
+
+if menu == "Sair":
+    logout()
+elif menu == "Dashboard":
+    dashboard_tela()
+elif menu == "Clientes":
+    clientes_tela()
+elif menu == "Produtos":
+    produtos_tela()
+elif menu == "Estoque":
+    estoque_tela()

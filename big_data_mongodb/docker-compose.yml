@@ -12,6 +12,19 @@ services:
     networks:
       - backend
 
+  spark:
+    build:
+      context: .
+      dockerfile: Dockerfile.spark
+    container_name: spark
+    volumes:
+      - .:/app
+    working_dir: /app
+    networks:
+      - backend
+    depends_on:
+      - mongodb
+
 volumes:
   mongo-data:
 
