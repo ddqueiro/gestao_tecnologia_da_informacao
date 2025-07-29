@@ -3,6 +3,20 @@
 
 ---
 
+## Estrutura do Repositório
+
+```
+├── README.md                 # Você está aqui
+├── docker-compose.yml        # Configuração dos containers MongoDB e Spark
+├── Dockerfile.spark          # Dockerfile para container Spark 
+├── app.py                    # Aplicação Streamlit principal
+├── popular_dados.py          # Script para popular o banco com dados fake
+├── requirements.txt          # Dependências Python
+├── sensivel.env              # Variáveis de ambiente 
+└── exemplos/                 # Prints demonstrativos do streamlit
+```
+
+
 ## 1. Introdução
 
 A E-Shop Brasil é uma das maiores plataformas de comércio eletrônico do país, atendendo milhões de clientes e processando milhares de pedidos diariamente. Com o crescimento da empresa, surgem desafios relacionados à gestão eficiente dos dados, personalização da experiência do cliente e otimização logística.
@@ -137,26 +151,19 @@ Acesse o sistema pelo navegador no endereço [http://localhost:8501](http://loca
 
 ## 7. Testes e Exemplos
 
-Para melhor visualização das funcionalidades, recomenda-se incluir na pasta `exemplos/` prints e GIFs que demonstrem:
+A pasta exemplos/ contém imagens que demonstram as principais funcionalidades da aplicação:
 
-- Tela de login e autenticação.
-- Inserção e edição de clientes e produtos.
-- Consulta e paginação.
-- Movimentação e atualização de estoque.
-- Dashboard com métricas.
+**login.JPG:** Tela de login e autenticação do usuário.
+**dashboard.JPG:** Visão geral do dashboard com métricas de clientes, produtos, estoque e faturamento.
+**clientes inserir.JPG:** Formulário para inserir novos clientes.
+**cliente buscar.JPG:** Interface para busca e listagem de clientes com filtros.
+**editar e deletar.JPG:** Tela para editar ou excluir registros de clientes.
+**produtos inserir e visualizar.JPG:** Inserção e visualização de produtos cadastrados.
+**estoque.JPG:** Controle e movimentação do estoque de produtos.
+
+Esses exemplos auxiliam na compreensão das funcionalidades implementadas e no uso prático da aplicação.
 
 ---
 
-## 8. Estrutura do Repositório
-
-```
-├── README.md
-├── docker-compose.yml        # Configuração dos containers MongoDB e Spark
-├── Dockerfile.spark          # Dockerfile para container Spark 
-├── app.py                    # Aplicação Streamlit principal
-├── popular_dados.py          # Script para popular o banco com dados fake
-├── requirements.txt          # Dependências Python
-├── sensivel.env              # Variáveis de ambiente 
-└── exemplos/                 # Prints demonstrativos do streamlit
 ```
 
