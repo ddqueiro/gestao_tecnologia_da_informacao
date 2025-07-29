@@ -153,13 +153,13 @@ Acesse o sistema pelo navegador no endereço [http://localhost:8501](http://loca
 
 A pasta exemplos/ contém imagens que demonstram as principais funcionalidades da aplicação:
 
-**login.JPG:** Tela de login e autenticação do usuário.
-**dashboard.JPG:** Visão geral do dashboard com métricas de clientes, produtos, estoque e faturamento.
-**clientes inserir.JPG:** Formulário para inserir novos clientes.
-**cliente buscar.JPG:** Interface para busca e listagem de clientes com filtros.
-**editar e deletar.JPG:** Tela para editar ou excluir registros de clientes.
-**produtos inserir e visualizar.JPG:** Inserção e visualização de produtos cadastrados.
-**estoque.JPG:** Controle e movimentação do estoque de produtos.
+**login.JPG:** Tela de login e autenticação do usuário.</b>
+**dashboard.JPG:** Visão geral do dashboard com métricas de clientes, produtos, estoque e faturamento.</b>
+**clientes inserir.JPG:** Formulário para inserir novos clientes.</b>
+**cliente buscar.JPG:** Interface para busca e listagem de clientes com filtros.</b>
+**editar e deletar.JPG:** Tela para editar ou excluir registros de clientes.</b>
+**produtos inserir e visualizar.JPG:** Inserção e visualização de produtos cadastrados.</b>
+**estoque.JPG:** Controle e movimentação do estoque de produtos.</b>
 
 Esses exemplos auxiliam na compreensão das funcionalidades implementadas e no uso prático da aplicação.
 
