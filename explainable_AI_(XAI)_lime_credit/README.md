@@ -87,12 +87,16 @@ O algoritmo Random Forest foi escolhido para este projeto por vários motivos im
 
 ## Estrutura do projeto
 
-/xai-lime-credit  
-├── main.py  # Código-fonte principal do projeto  
-├── requirements.txt  # Dependências Python necessárias  
-├── README.md  # Documentação do projeto  
-├── outputs/  # Diretório para armazenar imagens e gráficos gerados  
-│   └── lime_explanation_cliente_0.png  # Exemplo de explicação LIME para um cliente  
+/explainable_AI_(XAI)_lime_credit
+├── data_analysis.py            # Script para análise exploratória, pré-processamento e salvamento do dataset
+├── train_model.py             # Script para treinamento do modelo Random Forest e avaliação
+├── explain_client.py          # Script para gerar explicações locais com LIME para um cliente específico
+├── requirements.txt           # Arquivo com as dependências Python do projeto
+├── README.md                  # Documentação detalhada do projeto
+├── df_copia.parquet           # Arquivo gerado pelo data_analysis.py com os dados pré-processados
+├── outputs/                   # Diretório para armazenar imagens e gráficos gerados
+│   └── lime_explanation_cliente_<indice>.png  # Exemplo de gráfico salvo com explicação LIME para cliente
+
 
 ## Como executar
 
@@ -111,44 +115,46 @@ git clone <link-do-repositorio>
 cd xai-lime-credit
 ```
 
-2. **(Opcional) Crie e ative um ambiente virtual:**
 
-Linux/Mac:
-```bash
-python -m venv venv
-source venv/bin/activate
-```
-
-Windows:
-```bash
-python -m venv venv
-venv\Scriptsctivate
-```
-
-3. **Instale as dependências:**
+2. **Instale as dependências:**
 
 ```bash
 pip install -r requirements.txt
 ```
 
-4. **Execute o script principal:**
+3. **Execute o script data_analysis:**
 
 ```bash
-python main.py
+python data_analysis.py
 ```
 
-5. **Uso interativo:**
+4. **Execute o script train_model:**
 
-O script solicitará um índice do cliente para gerar uma explicação local da predição.
+```bash
+python train_model.py
+```
+5. **Execute o script explain_client:**
+
+```bash
+python explain_client.py
+```
+
+6. **Uso interativo:**
+
+O script explain_client.py solicitará um índice do cliente para gerar uma explicação local da predição.
 
 Digite um número entre 0 e o tamanho do conjunto de teste menos 1.
 
 Será exibida a explicação em texto e um gráfico será aberto mostrando a influência das variáveis.
 
-6. **Resultados:**
+7. **Resultados:**
 
-- Acurácia do modelo no conjunto de teste será exibida no console.  
-- Explicação em imagem é salva automaticamente em `outputs/lime_explanation_cliente_<indice>.png`.  
+## Resultados obtidos
+
+- Modelo Random Forest com acurácia aproximada de 75-80% no conjunto de teste, exibida ao executar o script `train_model.py`.
+- Explicações locais geradas pelo `explain_client.py` que identificam quais características influenciaram positivamente ou negativamente a classificação para cada cliente.
+- Visualizações intuitivas que facilitam a compreensão do modelo para usuários não técnicos.
+
 
 ## Tecnologias e bibliotecas utilizadas
 
