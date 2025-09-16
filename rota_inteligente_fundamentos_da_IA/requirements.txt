@@ -1,0 +1,5 @@
+pandas
+folium
+openrouteservice
+scikit-learn
+python-dotenv

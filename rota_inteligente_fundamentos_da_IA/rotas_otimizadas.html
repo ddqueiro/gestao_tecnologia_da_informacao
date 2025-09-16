@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_e6bbd20573039da04527f1e4b535b083 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_e6bbd20573039da04527f1e4b535b083" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_e6bbd20573039da04527f1e4b535b083 = L.map(
+                "map_e6bbd20573039da04527f1e4b535b083",
+                {
+                    center: [-23.557655500000003, -46.65865050000001],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 14,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_5dbebd328a10c6bad69d791176dd1922 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_5dbebd328a10c6bad69d791176dd1922.addTo(map_e6bbd20573039da04527f1e4b535b083);
+        
+    
+        function geo_json_67db01356e873e546f6f0841e8f5a740_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "red", "opacity": 0.7, "weight": 5};
+            }
+        }
+
+        function geo_json_67db01356e873e546f6f0841e8f5a740_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_67db01356e873e546f6f0841e8f5a740 = L.geoJson(null, {
+                onEachFeature: geo_json_67db01356e873e546f6f0841e8f5a740_onEachFeature,
+            
+                style: geo_json_67db01356e873e546f6f0841e8f5a740_styler,
+            ...{
+}
+        });
+
+        function geo_json_67db01356e873e546f6f0841e8f5a740_add (data) {
+            geo_json_67db01356e873e546f6f0841e8f5a740
+                .addData(data);
+        }
+            geo_json_67db01356e873e546f6f0841e8f5a740_add({"bbox": [-46.658247, -23.565032, -46.631878, -23.548156], "features": [{"bbox": [-46.658247, -23.565032, -46.631878, -23.548156], "geometry": {"coordinates": [[-46.652061, -23.565032], [-46.652238, -23.564885], [-46.652945, -23.564295], [-46.653402, -23.563906], [-46.653707, -23.563654], [-46.653942, -23.563459], [-46.65504, -23.562559], [-46.654346, -23.561988], [-46.654056, -23.561675], [-46.654163, -23.56157], [-46.654703, -23.561052], [-46.655865, -23.560048], [-46.656034, -23.559857], [-46.656215, -23.559618], [-46.656271, -23.55951], [-46.656322, -23.559357], [-46.65633, -23.559216], [-46.656284, -23.558347], [-46.656273, -23.558077], [-46.656283, -23.557922], [-46.656294, -23.557735], [-46.657289, -23.557091], [-46.658247, -23.556259], [-46.657497, -23.555554], [-46.65676, -23.554862], [-46.656391, -23.554538], [-46.655816, -23.553997], [-46.655631, -23.553819], [-46.655286, -23.553475], [-46.655114, -23.553339], [-46.654298, -23.552927], [-46.65419, -23.552866], [-46.653362, -23.552404], [-46.652881, -23.552155], [-46.652591, -23.552054], [-46.65094, -23.55151], [-46.649574, -23.55107], [-46.649109, -23.550924], [-46.648333, -23.550679], [-46.648033, -23.550581], [-46.647772, -23.550491], [-46.647617, -23.550441], [-46.646719, -23.550154], [-46.646269, -23.550003], [-46.646167, -23.549971], [-46.645787, -23.549855], [-46.645384, -23.549731], [-46.6451, -23.549643], [-46.64458, -23.549434], [-46.644419, -23.549339], [-46.643498, -23.548557], [-46.643248, -23.548322], [-46.643209, -23.548289], [-46.64316, -23.548247], [-46.642946, -23.548168], [-46.642848, -23.548156], [-46.64274, -23.548193], [-46.642645, -23.548279], [-46.642492, -23.548365], [-46.642369, -23.548908], [-46.64215, -23.549874], [-46.641975, -23.550498], [-46.641894, -23.550588], [-46.641232, -23.550903], [-46.6406, -23.551196], [-46.640299, -23.551331], [-46.639711, -23.551596], [-46.63776, -23.55252], [-46.637678, -23.552536], [-46.637463, -23.552478], [-46.637128, -23.552386], [-46.636318, -23.552156], [-46.635929, -23.552042], [-46.635442, -23.551899], [-46.635047, -23.551784], [-46.634943, -23.551767], [-46.634416, -23.551988], [-46.634254, -23.552057], [-46.633903, -23.552203], [-46.633234, -23.552471], [-46.632927, -23.552531], [-46.632556, -23.551776], [-46.632042, -23.550742], [-46.631909, -23.55047], [-46.63188, -23.550343], [-46.631878, -23.550217], [-46.631952, -23.549856], [-46.63209, -23.549387], [-46.632814, -23.549472], [-46.633057, -23.5495], [-46.633111, -23.549497], [-46.633186, -23.549439], [-46.633657, -23.549035], [-46.633736, -23.549266], [-46.633913, -23.549646]], "type": "LineString"}, "id": "0", "properties": {"segments": [{"distance": 1904.1, "duration": 204.8, "steps": [{"distance": 411.0, "duration": 41.8, "instruction": "Head northwest on Avenida Paulista", "name": "Avenida Paulista", "type": 11, "way_points": [0, 6]}, {"distance": 140.7, "duration": 15.1, "instruction": "Turn right onto Rua Itapeva", "name": "Rua Itapeva", "type": 1, "way_points": [6, 8]}, {"distance": 529.8, "duration": 59.4, "instruction": "Turn left onto Viaduto Professor Bernardino Tranchesi", "name": "Viaduto Professor Bernardino Tranchesi", "type": 0, "way_points": [8, 20]}, {"distance": 258.6, "duration": 28.9, "instruction": "Turn left onto Rua Ant\u00f4nio Carlos", "name": "Rua Ant\u00f4nio Carlos", "type": 0, "way_points": [20, 22]}, {"distance": 564.0, "duration": 59.6, "instruction": "Turn right onto Rua Augusta", "name": "Rua Augusta", "type": 1, "way_points": [22, 31]}, {"distance": 0.0, "duration": 0.0, "instruction": "Arrive at Rua Augusta, on the right", "name": "-", "type": 10, "way_points": [31, 31]}]}, {"distance": 3208.2, "duration": 454.7, "steps": [{"distance": 1309.3, "duration": 187.2, "instruction": "Head northeast on Rua Augusta", "name": "Rua Augusta", "type": 11, "way_points": [31, 57]}, {"distance": 18.2, "duration": 6.6, "instruction": "Keep left onto Rua Martins Fontes", "name": "Rua Martins Fontes", "type": 12, "way_points": [57, 58]}, {"distance": 1252.3, "duration": 173.1, "instruction": "Turn right onto Viaduto Nove de Julho", "name": "Viaduto Nove de Julho", "type": 1, "way_points": [58, 80]}, {"distance": 251.6, "duration": 27.6, "instruction": "Turn left onto Rua Anita Garibaldi", "name": "Rua Anita Garibaldi", "type": 0, "way_points": [80, 83]}, {"distance": 123.3, "duration": 19.7, "instruction": "Keep left onto Pra\u00e7a Cl\u00f3vis Bevil\u00e1qua", "name": "Pra\u00e7a Cl\u00f3vis Bevil\u00e1qua", "type": 12, "way_points": [83, 87]}, {"distance": 115.0, "duration": 22.3, "instruction": "Turn left onto Rua Venceslau Br\u00e1s", "name": "Rua Venceslau Br\u00e1s", "type": 0, "way_points": [87, 91]}, {"distance": 65.7, "duration": 9.5, "instruction": "Continue straight onto Pra\u00e7a da S\u00e9", "name": "Pra\u00e7a da S\u00e9", "type": 6, "way_points": [91, 92]}, {"distance": 72.9, "duration": 8.7, "instruction": "Turn sharp left onto Pra\u00e7a da S\u00e9", "name": "Pra\u00e7a da S\u00e9", "type": 2, "way_points": [92, 94]}, {"distance": 0.0, "duration": 0.0, "instruction": "Arrive at Pra\u00e7a da S\u00e9, straight ahead", "name": "-", "type": 10, "way_points": [94, 94]}]}], "summary": {"distance": 5112.3, "duration": 659.5}, "way_points": [0, 31, 94]}, "type": "Feature"}], "metadata": {"attribution": "openrouteservice.org | OpenStreetMap contributors", "engine": {"build_date": "2025-06-06T15:39:25Z", "graph_date": "2025-09-14T11:32:18Z", "osm_date": "2025-09-07T23:59:38Z", "version": "9.3.0"}, "query": {"coordinates": [[-46.651957, -23.564927], [-46.654189, -23.552867], [-46.633904, -23.549649]], "format": "geojson", "profile": "driving-car", "profileName": "driving-car"}, "service": "routing", "timestamp": 1757992546918}, "type": "FeatureCollection"});
+
+        
+    
+            geo_json_67db01356e873e546f6f0841e8f5a740.addTo(map_e6bbd20573039da04527f1e4b535b083);
+        
+    
+            var marker_9eae5bf372cae20e3675dbcc3a49b1ea = L.marker(
+                [-23.564927, -46.651957],
+                {
+}
+            ).addTo(map_e6bbd20573039da04527f1e4b535b083);
+        
+    
+            var icon_f96fce38ac0dcaf599674ae90c9dd0e1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7aa56fcdddaca84ab86331ffda1d0932 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_14422509f42268c67f0fe0dbb076035f = $(`<div id="html_14422509f42268c67f0fe0dbb076035f" style="width: 100.0%; height: 100.0%;">Entrega 1 (Cluster 0) Av. Paulista, 1000, Bela Vista, São Paulo, SP, 01310-100</div>`)[0];
+                popup_7aa56fcdddaca84ab86331ffda1d0932.setContent(html_14422509f42268c67f0fe0dbb076035f);
+            
+        
+
+        marker_9eae5bf372cae20e3675dbcc3a49b1ea.bindPopup(popup_7aa56fcdddaca84ab86331ffda1d0932)
+        ;
+
+        
+    
+    
+                marker_9eae5bf372cae20e3675dbcc3a49b1ea.setIcon(icon_f96fce38ac0dcaf599674ae90c9dd0e1);
+            
+    
+            var marker_a99a04da8bd2a3aa9d011e714d6a58e1 = L.marker(
+                [-23.552867, -46.654189],
+                {
+}
+            ).addTo(map_e6bbd20573039da04527f1e4b535b083);
+        
+    
+            var icon_cf693ca65496ac4f6afec427ceb73eb8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9dcbb2cef2251698d48a077d23732ff4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f3c36748e88384cead6b3faf68b0cb6d = $(`<div id="html_f3c36748e88384cead6b3faf68b0cb6d" style="width: 100.0%; height: 100.0%;">Entrega 2 (Cluster 0) Rua Augusta, 500, Consolação, São Paulo, SP, 01305-000</div>`)[0];
+                popup_9dcbb2cef2251698d48a077d23732ff4.setContent(html_f3c36748e88384cead6b3faf68b0cb6d);
+            
+        
+
+        marker_a99a04da8bd2a3aa9d011e714d6a58e1.bindPopup(popup_9dcbb2cef2251698d48a077d23732ff4)
+        ;
+
+        
+    
+    
+                marker_a99a04da8bd2a3aa9d011e714d6a58e1.setIcon(icon_cf693ca65496ac4f6afec427ceb73eb8);
+            
+    
+            var marker_dc53dccef1da6fae0fe76de3959689bc = L.marker(
+                [-23.549649, -46.633904],
+                {
+}
+            ).addTo(map_e6bbd20573039da04527f1e4b535b083);
+        
+    
+            var icon_b1a5bfef053a8345d0be32cc6b1033fa = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ff7006ce118f46b3cb8eaffb02d2521d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_490ab3ab097726c9d874a6ef7e37312a = $(`<div id="html_490ab3ab097726c9d874a6ef7e37312a" style="width: 100.0%; height: 100.0%;">Entrega 3 (Cluster 0) Praça da Sé, 10, Sé, São Paulo, SP, 01001-000</div>`)[0];
+                popup_ff7006ce118f46b3cb8eaffb02d2521d.setContent(html_490ab3ab097726c9d874a6ef7e37312a);
+            
+        
+
+        marker_dc53dccef1da6fae0fe76de3959689bc.bindPopup(popup_ff7006ce118f46b3cb8eaffb02d2521d)
+        ;
+
+        
+    
+    
+                marker_dc53dccef1da6fae0fe76de3959689bc.setIcon(icon_b1a5bfef053a8345d0be32cc6b1033fa);
+            
+    
+            var marker_1f8770caa6c04273cfafc0d260245268 = L.marker(
+                [-23.563179, -46.694552],
+                {
+}
+            ).addTo(map_e6bbd20573039da04527f1e4b535b083);
+        
+    
+            var icon_251d5fa66cd9323512da812ef78c6c7e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_705efe231ef3b3c6f757f23f42e6d1d9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f40e1eef7f21f0feaf57a332473c24b8 = $(`<div id="html_f40e1eef7f21f0feaf57a332473c24b8" style="width: 100.0%; height: 100.0%;">Entrega 4 (Cluster 1) Av. Brigadeiro Faria Lima, 500, São Paulo, SP, 01452-000</div>`)[0];
+                popup_705efe231ef3b3c6f757f23f42e6d1d9.setContent(html_f40e1eef7f21f0feaf57a332473c24b8);
+            
+        
+
+        marker_1f8770caa6c04273cfafc0d260245268.bindPopup(popup_705efe231ef3b3c6f757f23f42e6d1d9)
+        ;
+
+        
+    
+    
+                marker_1f8770caa6c04273cfafc0d260245268.setIcon(icon_251d5fa66cd9323512da812ef78c6c7e);
+            
+</script>
+</html>
