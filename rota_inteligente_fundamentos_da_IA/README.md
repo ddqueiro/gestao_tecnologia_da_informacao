@@ -1,119 +1,192 @@
-# 🚀 Rota Inteligente: Otimização de Entregas com Algoritmos de IA  
 
-## 📌 Descrição do Problema  
-A empresa fictícia **Sabor Express** atua com delivery de alimentos na região central da cidade. Durante horários de pico (almoço e jantar), enfrenta atrasos nas entregas, rotas ineficientes, aumento de custos de combustível e insatisfação dos clientes.  
+# 🚚 Rota Inteligente: Otimização de Entregas com Algoritmos de IA
 
-Atualmente, os percursos são definidos de forma manual, baseados apenas na experiência dos entregadores. Para se manter competitiva, a empresa precisa de uma solução tecnológica para otimizar as rotas de entrega.  
-
----
-
-## 🎯 Objetivo  
-Desenvolver uma **solução inteligente**, baseada em algoritmos de Inteligência Artificial, capaz de sugerir as melhores rotas para os entregadores, agrupando entregas próximas e reduzindo tempo e custo operacional.  
+Sistema de otimização de rotas para a empresa fictícia **Sabor Express**, desenvolvido como parte da disciplina *Artificial Intelligence Fundamentals*.  
+A solução utiliza algoritmos clássicos de Inteligência Artificial para agrupar entregas e encontrar rotas mais eficientes em uma cidade representada como grafo.
 
 ---
 
-## 🛠️ Abordagem Utilizada  
+## 📋 Descrição do Problema
 
-- **Representação em Grafo**:  
-  Os pontos de entrega são modelados como vértices e as ruas como arestas, com pesos baseados na distância/tempo estimado.
+A Sabor Express, uma pequena empresa de delivery, enfrenta dificuldades para gerenciar suas entregas em horários de pico.  
+Atualmente, os percursos são definidos manualmente, resultando em rotas ineficientes, atrasos, aumento de custos e insatisfação dos clientes.
 
-- **Algoritmos de Busca (A*, BFS, DFS)**:  
-  Utilizados para encontrar caminhos mais curtos entre pontos de entrega.
-
-- **Clustering com K-Means**:  
-  Agrupamento de entregas próximas em clusters para otimizar o trabalho dos entregadores.
-
-- **API OpenRouteService**:  
-  Utilizada para geocodificação dos endereços e cálculo das rotas otimizadas.
+O objetivo do projeto é criar uma solução inteligente que:
+- Sugira automaticamente as melhores rotas para entregadores.
+- Agrupe entregas próximas, otimizando tempo e distância.
+- Reduza custos operacionais e aumente a satisfação dos clientes.
 
 ---
 
-## 🗂️ Estrutura do Repositório  
+## 🎯 Objetivos da Solução
+
+- Representar a cidade como um **grafo** (nós = bairros/endereços, arestas = ruas com pesos).
+- Agrupar entregas usando **clustering (K-Means)**.
+- Encontrar rotas otimizadas usando **A*** para menor caminho entre pontos e **TSP (vizinho mais próximo)** para sequência de entregas.
+- Gerar **visualizações gráficas** das rotas e clusters.
+
+---
+
+## 🧠 Abordagem Adotada
+
+### 1. Representação da Cidade
+A cidade é gerada como uma grade 15x15. Cada nó representa um ponto da cidade (rua ou bairro), e o restaurante é fixado no centro.
+
+### 2. Agrupamento das Entregas (K-Means)
+As entregas são carregadas de um arquivo CSV (`data/entregas.csv`) e agrupadas em **3 clusters** geograficamente próximos.  
+Cada cluster representa um conjunto de entregas que pode ser atendido por um entregador.
+
+### 3. Otimização das Rotas (TSP + A*)
+Para cada cluster:
+- Utilizamos o **algoritmo do vizinho mais próximo** (heurística do TSP) para definir a ordem das entregas.
+- Usamos o **A*** para calcular o menor caminho entre dois pontos consecutivos no grafo.
+- Resultado: cada rota percorre a menor distância total possível.
+
+### 4. Visualização
+Dois gráficos são gerados:
+- **Clusters de Entregas:** mostra a distribuição das entregas agrupadas por cor.
+- **Rotas Otimizadas:** mostra as rotas percorridas por cada entregador com cores diferentes.
+
+---
+
+## 🔧 Algoritmos Utilizados
+
+- **A*** (A-star): algoritmo de busca heurística para menor caminho entre dois nós.
+- **K-Means:** algoritmo de aprendizado não supervisionado para agrupar entregas em clusters.
+- **TSP – Vizinho mais Próximo:** heurística simples para percorrer todos os pontos de um cluster na menor distância possível.
+
+---
+
+## 🗂 Estrutura do Repositório
 
 ```
-📦 rota_inteligente_fundamentos_da_IA
- ┣ 📂 data
- ┃ ┗ 📄 entregas.csv           # Endereços das entregas
- ┣ 📂 src
- ┃ ┗ 📄 rota_inteligente.py    # Código principal
- ┣ 📄 .env                     # Chave da API OpenRouteService
- ┣ 📄 requirements.txt         # Bibliotecas necessárias
- ┣ 📄 rotas_otimizadas.html    # Saída com rotas otimizadas no mapa
- ┗ 📄 README.md                # Este arquivo
+/data
+  entregas.csv              # Arquivo de entregas (ID, Nome_Cliente, Endereco)
+/outputs
+  resultado_otimizacao.png  # Gráfico gerado com clusters e rotas
+app.py                      # Código principal
+requirements.txt            # Bibliotecas necessárias
+README.md                   # Este arquivo
 ```
 
 ---
 
-## ⚙️ Execução  
+## 📝 Diagrama do Modelo (Exemplo)
 
-### 1️⃣ Instalar Dependências  
+```text
+Restaurante (centro) → nós (endereços) conectados por arestas com pesos
+```
+
+(O projeto gera automaticamente um grafo da cidade e pode ser exportado como imagem.)
+
+---
+
+## 📊 Resultados
+
+- **Clusters formados:** 3 grupos de entregas geograficamente próximos.
+- **Rotas otimizadas:** cada cluster é atendido por uma rota eficiente.
+- **Distância total percorrida:** exibida no terminal após a execução.
+- **Visualização:** arquivo `outputs/resultado_otimizacao.png`.
+
+---
+
+## 🚀 Execução do Projeto
+
+### 1. Clonar o Repositório
+```bash
+git clone https://github.com/usuario/rota-inteligente.git
+cd ROTA_INTELIGENTE_FUNDAMENTOS_DA_IA
+```
+
+### 2. Criar Ambiente Virtual (opcional)
+```bash
+python -m venv venv
+source venv/bin/activate   # Linux/Mac
+venv\Scripts\activate    # Windows
+```
+
+### 3. Instalar Dependências
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2️⃣ Configurar Variáveis de Ambiente  
-Crie um arquivo `.env` na raiz do projeto com a seguinte linha:  
-```
-ORS_API_KEY=sua_chave_da_api_aqui
-```
+### 4. Preparar Arquivo de Entregas
+Coloque seu arquivo `entregas.csv` em `data/` com o seguinte formato:
 
-### 3️⃣ Executar o Projeto  
+| ID | Nome_Cliente | Endereco |
+|----|--------------|----------|
+| 1  | Cliente A    | Rua X, nº Y |
+| 2  | Cliente B    | Rua Z, nº W |
+
+### 5. Executar o Programa
 ```bash
-python src/rota_inteligente.py
+python app.py
 ```
 
-O sistema gerará um arquivo **rotas_otimizadas.html** com as rotas otimizadas no mapa interativo.
+Os gráficos serão mostrados na tela e salvos em `outputs/`.
 
 ---
 
-## 📊 Resultados Obtidos  
+## 💡 Limitações e Possíveis Melhorias
 
-- Endereços geocodificados e visualizados em mapa interativo.  
-- Agrupamento das entregas por proximidade utilizando K-Means.  
-- Rotas otimizadas calculadas via API, reduzindo tempo e custo.  
+**Limitações atuais do sistema:**
+
+1. **Heurística simplificada do TSP:**  
+   - O algoritmo do vizinho mais próximo utilizado não garante a rota globalmente ótima.  
+   - Pode gerar pequenas ineficiências para grande volume de entregas.
+
+2. **Cidade simulada em grade:**  
+   - A grade 15x15 não representa ruas reais ou distâncias precisas.  
+   - Não considera sentido das ruas, interseções complexas ou obstáculos urbanos.
+
+3. **Aleatoriedade na localização das entregas:**  
+   - IDs dos nós das entregas são gerados aleatoriamente.  
+   - Não há restrições reais de endereços, horários ou prioridades detalhadas.
+
+4. **Não considera tráfego ou tempo real de viagem:**  
+   - Pesos das arestas são estimativas baseadas em distância, sem considerar congestionamento ou semáforos.
+
+5. **Capacidade e limitações do entregador:**  
+   - Não há limite de entregas por entregador ou tipo de veículo.  
+   - Não otimiza distribuição de entregas entre múltiplos entregadores.
+
+6. **Falta de atualização dinâmica:**  
+   - Rotas são pré-calculadas, não se adaptam a novos pedidos ou cancelamentos em tempo real.
+
+**Possíveis melhorias futuras:**
+
+1. **Otimização avançada do TSP:**  
+   - Algoritmos genéticos, simulated annealing ou branch and bound para rotas mais eficientes.
+
+2. **Integração com mapas reais:**  
+   - OpenStreetMap, Google Maps API ou outros para distâncias reais, sentido das ruas e restrições.
+
+3. **Consideração de tráfego em tempo real:**  
+   - Ajuste dinâmico das rotas com dados de trânsito e congestionamento.
+
+4. **Priorização de entregas:**  
+   - Ajuste de rotas considerando urgência, horário e tamanho dos pedidos.
+
+5. **Múltiplos veículos e VRP:**  
+   - Distribuição eficiente de entregas entre vários entregadores, usando Vehicle Routing Problem.
+
+6. **Interface gráfica e aplicação web:**  
+   - Dashboard interativo mostrando status das entregas e rotas em tempo real.
+
+7. **Escalabilidade e performance:**  
+   - Paralelização, caching e heurísticas avançadas para centenas ou milhares de entregas.
 
 ---
 
-## 📈 Métricas Avaliadas  
+## 📚 Referências
 
-- Tempo total estimado das rotas.  
-- Redução de distância percorrida após aplicação do algoritmo.  
-- Quantidade de clusters versus tempo médio por rota.  
-
----
-
-## 📚 Fontes de Pesquisa  
-
-1. **Estudo de caso da UPS – ORION**  
-   Sistema de otimização de rotas utilizado pela UPS, combinando heurísticas e dados de tráfego para economia de milhões de dólares/ano.  
-
-2. **Medium – “Optimizing Logistics: Clustering e MILP”**  
-   Aplicação prática de K-Means e programação linear inteira mista para agrupar entregas e minimizar distância.  
-
-3. **ResearchGate – AI-Powered Route Optimization**  
-   Explora integração de IA, sensores IoT e algoritmos heurísticos para roteamento dinâmico.  
-
-4. **Kardinal.ai – Fresh Product Delivery**  
-   Caso real de uso de algoritmos para otimização contínua de rotas e planejamento dinâmico.  
+- UPS – ORION: [On-Road Integrated Optimization and Navigation](https://www.ups.com)
+- Medium – “Optimizing Logistics: Clustering e MILP”
+- ResearchGate – AI-Powered Route Optimization
+- Kardinal.ai – Case Study “Fresh Product Delivery”
 
 ---
 
-## 💡 Possíveis Melhorias  
+## 🧑‍💻 Autoria
 
-## Roteamento dinâmico com técnicas avançadas
-
-Explorar algoritmos genéticos, otimização por colônia de formigas ou aprendizado por reforço para gerar rotas que se adaptem automaticamente a mudanças no cenário, como novas entregas, bloqueios de ruas ou alterações no tempo de deslocamento.
-
-## Integração com dados de tráfego em tempo real
-
-Conectar a solução a APIs públicas ou privadas (ex.: Google Maps Traffic, Waze, MapBox) para considerar condições reais de trânsito e estimar tempos de chegada mais precisos. Isso permite que o sistema ajuste a rota antes e durante o percurso.
-
-## Painel web de acompanhamento operacional
-
-Desenvolver um painel online (por exemplo, com Streamlit, Dash ou React + Flask) para que gestores acompanhem, em tempo real, a localização dos entregadores, status de cada entrega, alertas de atrasos e métricas de performance. Isso traz mais visibilidade e permite intervenções rápidas quando necessário.  
-
----
-
-## 👩‍💻 Autor  
-
-Projeto desenvolvido por **Dannyelly Dayane Queiroz** como parte da disciplina **Artificial Intelligence Fundamentals**.
+Projeto desenvolvido por **[Seu Nome]** para a disciplina *Artificial Intelligence Fundamentals*.
