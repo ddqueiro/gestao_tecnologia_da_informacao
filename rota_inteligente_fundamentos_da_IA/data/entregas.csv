@@ -1,5 +1,21 @@
-id,endereco
-1,"Av. Paulista, 1000, Bela Vista, São Paulo, SP, 01310-100"
-2,"Rua Augusta, 500, Consolação, São Paulo, SP, 01305-000"
-3,"Praça da Sé, 10, Sé, São Paulo, SP, 01001-000"
-4,"Av. Brigadeiro Faria Lima, 500, São Paulo, SP, 01452-000"
+ID,Nome_Cliente,Endereco
+0,João Silva,Rua das Flores 123
+1,Maria Santos,Av. Principal 456
+2,Pedro Oliveira,Rua do Comércio 789
+3,Ana Costa,Praça Central 321
+4,Carlos Ferreira,Rua da Paz 654
+5,Lucia Almeida,Av. das Palmeiras 987
+6,Roberto Lima,Rua do Sol 147
+7,Fernanda Rocha,Alameda dos Anjos 258
+8,Antonio Souza,Rua das Estrelas 369
+9,Patricia Mendes,Av. da Liberdade 741
+10,Rafael Barbosa,Rua da Esperança 852
+11,Juliana Dias,Praça da Alegria 963
+12,Marcos Pereira,Rua das Rosas 147
+13,Camila Nunes,Av. dos Lírios 258
+14,Felipe Rodrigues,Rua das Margaridas 369
+15,Larissa Gomes,Alameda das Orquídeas 741
+16,Bruno Alves,Rua das Violetas 852
+17,Mariana Costa,Av. das Tulipas 963
+18,Diego Santos,Rua das Azaleias 147
+19,Carolina Lima,Alameda das Begônias 258
