@@ -93,7 +93,7 @@ Rodar os testes unitários.
 Exibir o status do build no repositório.
 
 📊 Status do Build
-![Build Status](https://github.com/danyelly/gestao_tecnologia_da_informacao/actions/workflows/ci.yml/badge.svg)
+![Build Status](https://github.com/ddqueiro/gestao_tecnologia_da_informacao/actions/workflows/ci.yml/badge.svg)
 
 
 ✅ Conclusão
