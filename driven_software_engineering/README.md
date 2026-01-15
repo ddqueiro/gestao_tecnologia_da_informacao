@@ -59,21 +59,23 @@ Prompt utilizado:
 // Prompt: "Crie uma função em Node.js chamada validarEmail que receba uma string representando um e-mail.
 // A função deve retornar true se o e-mail for válido e false caso contrário.
 // Use regex para validar o formato do e-mail e considere casos comuns de erro."
+```
 
 Testes automatizados
 Arquivo: validarEmail.test.js  
 Prompt utilizado:
-
+```js
 // Prompt: "Crie testes unitários usando Jest para a função validarEmail.
 // Os testes devem cobrir e-mails válidos, inválidos, com subdomínios e casos com caracteres especiais."
+```
 
 Workflow de CI/CD
 Arquivo: .github/workflows/ci.yml  
 Prompt utilizado:
-
+```yaml
 # Prompt: "Crie um workflow GitHub Actions que rode os testes automatizados com Jest em cada push ou pull request.
 // Configure Node.js versão 18, instale dependências e execute os testes."
-
+```
 
 ⚙️Pipeline Automatizado
 O GitHub Actions foi configurado para:
