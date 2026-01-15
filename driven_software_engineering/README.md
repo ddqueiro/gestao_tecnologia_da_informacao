@@ -93,7 +93,7 @@ Rodar os testes unitários.
 Exibir o status do build no repositório.
 
 📊 Status do Build
-![Build Status](https://github.com/ddqueiro/gestao_tecnologia_da_informacao/actions/workflows/ci.yml/badge.svg)
+![Build Status](C:\Users\danyd\OneDrive\Área de Trabalho\repositorios_git\gestao_tecnologia_da_informacao\github\workflows\ci.yml/badge.svg)
 
 
 ✅ Conclusão
@@ -103,4 +103,4 @@ E o caso real da HP comprova que essa abordagem já está trazendo resultados po
 
 Este trabalho demonstra, na prática, como a IA pode acelerar o desenvolvimento e garantir qualidade em fluxos de trabalho modernos de engenharia de software.
 
-#testando o action
+#testando o action 2.0
