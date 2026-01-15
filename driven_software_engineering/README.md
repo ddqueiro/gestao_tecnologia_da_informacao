@@ -95,7 +95,6 @@ Exibir o status do build no repositório.
 📊 Status do Build
 ![Build Status](C:\Users\danyd\OneDrive\Área de Trabalho\repositorios_git\gestao_tecnologia_da_informacao\github\workflows\ci.yml/badge.svg)
 
-
 ✅ Conclusão
 A análise do problema mostra que a equipe fictícia sofre com baixa cobertura de testes e lentidão no ciclo de feedback.
 A discussão conceitual evidencia como a IA, por meio do Copilot e do Actions, pode transformar esse cenário.
@@ -103,4 +102,4 @@ E o caso real da HP comprova que essa abordagem já está trazendo resultados po
 
 Este trabalho demonstra, na prática, como a IA pode acelerar o desenvolvimento e garantir qualidade em fluxos de trabalho modernos de engenharia de software.
 
-#testando o action V6.0#
+#testando o actios again" 

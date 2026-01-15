@@ -4,7 +4,7 @@
   "description": "A empresa fictícia TechGestão, responsável por uma ferramenta de colaboração online, enfrenta um dilema entre velocidade e qualidade no desenvolvimento de software.",
   "main": "validarEmail.js",
   "scripts": {
-    "test": "jest"
+    "test": "npx jest"
   },
   "keywords": [],
   "author": "",

@@ -28,5 +28,6 @@ jobs:
         working-directory: driven_software_engineering
 
       - name: Run tests
-        run: npm test
+        run: npx --no-install jest
         working-directory: driven_software_engineering
+
