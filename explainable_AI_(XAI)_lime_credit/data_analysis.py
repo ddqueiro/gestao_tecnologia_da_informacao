@@ -22,6 +22,7 @@ colunas = [
 df = pd.read_csv(url, sep=' ', header=None, names=colunas)
 df['Target'] = df['Target'].map({1: 1, 2: 0})  # 1 = bom pagador, 0 = mau pagador
 print('\n----------------------')
+
 print('2. Análise Exploratória')
 print('----------------------')
 # ---------------------
@@ -53,7 +54,7 @@ print('\n----------------------')
 print("3. Pré-processamento dos dados")
 print('----------------------')
 
-# Faz uma cópia do DataFrame original para não mexer nos dados crus
+#cópia do DataFrame original para não mexer nos dados crus
 df_copia = df.copy()
 
 # Converte colunas categóricas para números

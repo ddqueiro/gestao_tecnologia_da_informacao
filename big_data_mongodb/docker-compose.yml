@@ -9,6 +9,7 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: 1234
     volumes:
       - mongo-data:/data/db
+    
     networks:
       - backend
 

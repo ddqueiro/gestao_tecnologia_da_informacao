@@ -111,8 +111,8 @@ O algoritmo Random Forest foi escolhido para este projeto por vários motivos im
 1. **Clone o repositório:**
 
 ```bash
-git clone <link-do-repositorio>
-cd xai-lime-credit
+git clone https://github.com/ddqueiro/gestao_tecnologia_da_informacao.git
+cd explainable_AI_(XAI)_lime_credit
 ```
 
 
@@ -177,15 +177,9 @@ Será exibida a explicação em texto e um gráfico será aberto mostrando a inf
 - Adicionar validação cruzada e otimização de hiperparâmetros.  
 - Automatizar geração de relatórios e dashboards interativos.  
 
-## Referências
-
-- Ribeiro, M. T., Singh, S., & Guestrin, C. (2016). Why Should I Trust You? Explaining the Predictions of Any Classifier. [Link](https://arxiv.org/abs/1602.04938)  
-- Documentação oficial do LIME: https://marcotcr.github.io/lime/tutorials.html  
-- Dataset Statlog (German Credit Data) — UCI Machine Learning Repository: https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29  
-
 ## Contato
 
 Para dúvidas, sugestões ou contribuições, entre em contato:
 
-- Email: seuemail@exemplo.com  
-- GitHub: https://github.com/seunomeusuario
+- Email: danydayane2@hotmail.com  
+

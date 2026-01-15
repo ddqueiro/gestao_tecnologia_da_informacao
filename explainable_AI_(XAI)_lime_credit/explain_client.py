@@ -73,7 +73,7 @@ def gerar_texto_explicativo_bonito(explicacao_lime, probabilidades):
         f"e {probabilidades[0]:.1%} para ser um MAU  pagador."
     )
 
-    if probabilidades[1] > probabilidades[0]:
+    if probabilidades[0] > probabilidades[1]:
         texto.append("Com base nos fatores acima, considera-se que a pessoa tem maior chance de ser BOM pagador.")
     else:
         texto.append("Com base nos fatores acima, indica-se maior risco de inadimplência, chance de ser MAU pagador).")

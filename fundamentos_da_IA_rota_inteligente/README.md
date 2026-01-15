@@ -189,4 +189,4 @@ Os gráficos serão mostrados na tela e salvos em `outputs/`.
 
 ## 🧑‍💻 Autoria
 
-Projeto desenvolvido por **[Seu Nome]** para a disciplina *Artificial Intelligence Fundamentals*.
+Projeto desenvolvido por **Dannyelly Queiroz** para a disciplina *Artificial Intelligence Fundamentals*.
