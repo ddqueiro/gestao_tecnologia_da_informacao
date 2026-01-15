@@ -89,7 +89,7 @@ Rodar os testes unitários.
 Exibir o status do build no repositório.
 
 📊 Status do Build
-https://github.com/ddqueiro/gestao_tecnologia_da_informacao/actions/workflows/ci.yml/badge.svg
+![Build Status](https://github.com/ddqueiro/gestao_tecnologia_da_informacao/actions/workflows/ci.yml/badge.svg)
 
 ✅ Conclusão
 A análise do problema mostra que a equipe fictícia sofre com baixa cobertura de testes e lentidão no ciclo de feedback.
@@ -97,3 +97,5 @@ A discussão conceitual evidencia como a IA, por meio do Copilot e do Actions, p
 E o caso real da HP comprova que essa abordagem já está trazendo resultados positivos em empresas globais.
 
 Este trabalho demonstra, na prática, como a IA pode acelerar o desenvolvimento e garantir qualidade em fluxos de trabalho modernos de engenharia de software.
+
+"teste"
