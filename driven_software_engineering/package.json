@@ -1,0 +1,16 @@
+{
+  "name": "driven_software_engineering",
+  "version": "1.0.0",
+  "description": "A empresa fictícia TechGestão, responsável por uma ferramenta de colaboração online, enfrenta um dilema entre velocidade e qualidade no desenvolvimento de software.",
+  "main": "validarEmail.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "jest": "^30.2.0"
+  }
+}

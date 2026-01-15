@@ -1,5 +1,5 @@
 // Gerado com o prompt: "Crie testes unitários para a função validarEmail usando Jest"
-const validarEmail = require('./validarEmail');
+const validarEmail = require('./validar_email');
 
 test('retorna true para e-mail válido simples', () => {
   expect(validarEmail('teste@exemplo.com')).toBe(true);
