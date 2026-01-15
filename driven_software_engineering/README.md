@@ -29,15 +29,18 @@ Um exemplo concreto e muito relevante de aplicação do **GitHub Copilot** no me
 Segundo a Microsoft, a HP adotou o Copilot como parte de sua estratégia de modernização do desenvolvimento de software, com o objetivo de **aumentar a velocidade de entrega de novas funcionalidades** e **reduzir o tempo gasto em tarefas repetitivas**.  
 
 ### 🚀 Impacto na HP
+
 - **Produtividade**: os desenvolvedores passaram a escrever código mais rápido, já que o Copilot sugere trechos prontos e reduz o esforço em tarefas repetitivas.  
 - **Qualidade**: ao gerar testes automatizados, o Copilot ajudou a aumentar a cobertura de testes e reduzir bugs em produção.  
 - **Inovação**: com menos tempo gasto em código básico, os times puderam focar em funcionalidades estratégicas e inovadoras.  
 - **Velocidade de entrega**: a integração do Copilot ao fluxo de trabalho permitiu que novas funcionalidades chegassem ao mercado em menos tempo, acompanhando a pressão competitiva.  
 
 ### 🌍 Reflexão mais ampla
+
 O caso da HP mostra que o uso de IA no desenvolvimento não é apenas uma tendência acadêmica ou experimental, mas uma **realidade em grandes empresas globais**.  
 Organizações que precisam equilibrar velocidade e qualidade encontram no Copilot e no GitHub Actions ferramentas poderosas para:
-- Automatizar tarefas repetitivas.  
+
+- Automatizar tarefas repetitivas.
 - Garantir consistência no código.  
 - Reduzir gargalos de QA manual.  
 - Aumentar a confiança na entrega contínua.  
@@ -45,6 +48,7 @@ Organizações que precisam equilibrar velocidade e qualidade encontram no Copil
 Além da HP, outras empresas de tecnologia e até startups têm relatado ganhos semelhantes. Times de desenvolvimento open source, por exemplo, usam **GitHub Actions** para rodar testes automaticamente em cada pull request, garantindo que contribuições externas não quebrem o projeto. Isso mostra que a combinação de **Copilot + Actions** é aplicável tanto em grandes corporações quanto em equipes menores.
 
 ### 🔗 Fonte oficial
+
 Você pode conferir o artigo completo da Microsoft sobre a adoção do Copilot pela HP aqui:  
 [HP adota GitHub Copilot e aumenta a inovação e a velocidade do software](https://news.microsoft.com/pt-br/hp-adota-github-copilot-e-aumenta-a-inovacao-e-a-velocidade-do-software/)
 
@@ -92,7 +96,6 @@ Exibir o status do build no repositório.
 ![Build Status](https://github.com/ddqueiro/gestao_tecnologia_da_informacao/actions/workflows/ci.yml/badge.svg)
 
 
-
 ✅ Conclusão
 A análise do problema mostra que a equipe fictícia sofre com baixa cobertura de testes e lentidão no ciclo de feedback.
 A discussão conceitual evidencia como a IA, por meio do Copilot e do Actions, pode transformar esse cenário.
@@ -100,4 +103,4 @@ E o caso real da HP comprova que essa abordagem já está trazendo resultados po
 
 Este trabalho demonstra, na prática, como a IA pode acelerar o desenvolvimento e garantir qualidade em fluxos de trabalho modernos de engenharia de software.
 
-
+#testando o action
