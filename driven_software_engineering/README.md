@@ -102,4 +102,4 @@ E o caso real da HP comprova que essa abordagem já está trazendo resultados po
 
 Este trabalho demonstra, na prática, como a IA pode acelerar o desenvolvimento e garantir qualidade em fluxos de trabalho modernos de engenharia de software.
 
-#testando o actios again" 
+#testando o actios again aaaaaaa" 
