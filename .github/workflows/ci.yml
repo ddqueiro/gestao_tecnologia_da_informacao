@@ -13,9 +13,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: driven_software_engineering # 👈 muda o diretório
 
     steps:
       - name: Checkout repository
@@ -28,6 +25,8 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        working-directory: driven_software_engineering
 
       - name: Run tests
-        run: npx jest
+        run: npm test
+        working-directory: driven_software_engineering
