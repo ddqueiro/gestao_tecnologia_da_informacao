@@ -1,7 +1,7 @@
 # IA na prática: Acelerando o desenvolvimento e garantindo a qualidade com um fluxo de trabalho automatizado por IA
 
 ## 📌 Análise do Problema
-A empresa fictícia **TechGestão**, responsável por uma ferramenta de colaboração online, enfrenta um dilema entre **velocidade e qualidade** no desenvolvimento de software.  
+A empresa fictícia, responsável por uma ferramenta de colaboração online, enfrenta um dilema entre **velocidade e qualidade** no desenvolvimento de software.  
 Nos últimos meses, a pressão para entregar novas funcionalidades aumentou devido a campanhas de marketing e demandas de clientes. Porém, ao acelerar os ciclos de entrega, a equipe reduziu a cobertura de testes e passou a introduzir mais bugs em produção.  
 
 O cenário atual mostra gargalos claros:
@@ -102,5 +102,3 @@ A discussão conceitual evidencia como a IA, por meio do Copilot e do Actions, p
 E o caso real da HP comprova que essa abordagem já está trazendo resultados positivos em empresas globais.
 
 Este trabalho demonstra, na prática, como a IA pode acelerar o desenvolvimento e garantir qualidade em fluxos de trabalho modernos de engenharia de software.
-
-#testando o actios again aaaaaaa" 
