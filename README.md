@@ -1,58 +1,55 @@
-# 🎓 Repositório de Projetos da Faculdade
+# 🎓 University Project Repository
 
-Bem-vindo(a) ao meu **Repositório de Projetos da Faculdade**!  
-Aqui estão reunidos os principais trabalhos desenvolvidos durante o curso de **Gestão da Tecnologia da Informação**, abrangendo áreas como **Matemática Aplicada, Ciência de Dados, Cibersegurança, Redes de Computadores, Big Data e Inteligência Artificial Explicável (XAI)**.  
+Welcome to my University Project Repository!
+Here you will find the main projects developed during my Information Technology Management degree, covering areas such as Applied Mathematics, Data Science, Cybersecurity, Computer Networks, Big Data, and Explainable Artificial Intelligence (XAI).
 
-Este espaço funciona como uma vitrine da minha trajetória acadêmica, mostrando diferentes tecnologias, metodologias e formas de resolução de problemas.  
+This repository works as a showcase of my academic journey, highlighting different technologies, methodologies, and problem-solving approaches applied throughout the course.
 
 ---
 
-## 📂 Projetos
+## 📂 Projects
 
-### 📈 Matemática Aplicada
-- [**aplied_math_regressao-linear-wave-surfboards**](https://github.com/ddqueiro/gestao_tecnologia_da_informacao/tree/main/aplied_math_regressao-linear-wave-surfboards)  
-  Regressão linear aplicada à análise de mercado de pranchas de surf.  
+### 📈 Applied Mathematics
+- [**aplied_math_linear regression wave surfboards**](https://github.com/ddqueiro/gestao_tecnologia_da_informacao/tree/main/aplied_math_regressao-linear-wave-surfboards)  
+  Linear regression applied to market analysis for surfboards.
 
 ### 🗄️ Big Data
 - [**big_data_mongodb**](https://github.com/ddqueiro/gestao_tecnologia_da_informacao/tree/main/big_data_mongodb)  
-  Experimentos com MongoDB para cenários de Big Data.  
+  Experiments with MongoDB applied to Big Data scenarios.
 
-### 🌐 Redes de Computadores
-- [**computer_network_expansão_rede**](https://github.com/ddqueiro/gestao_tecnologia_da_informacao/tree/main/computer_network_expans%C3%A3o_rede)  
-  Projeto de expansão de rede para uma empresa simulada.  
+### 🌐 Computer Network
+- [**computer_network_expansion*](https://github.com/ddqueiro/gestao_tecnologia_da_informacao/tree/main/computer_network_expans%C3%A3o_rede)  
+  Network expansion project for a simulated company. 
 - [**computer_network_loja_varejo**](https://github.com/ddqueiro/gestao_tecnologia_da_informacao/tree/main/computer_network_loja_varejo)  
   Planejamento e configuração de rede para uma loja de varejo.  
 
-### 🔐 Cibersegurança
-- [**cyber_security_conscientizacao_digital**](https://github.com/ddqueiro/gestao_tecnologia_da_informacao/tree/main/cyber_security_conscientizacao_digital)  
-  Campanha de conscientização digital para boas práticas em cibersegurança.  
+### 🔐 Cybersecurity
+- [**cyber_security_digital awareness**](https://github.com/ddqueiro/gestao_tecnologia_da_informacao/tree/main/cyber_security_conscientizacao_digital)  
+ Digital awareness campaign focused on cybersecurity best practices
 - [**cyber_security_fortalecimento_rede**](https://github.com/ddqueiro/gestao_tecnologia_da_informacao/tree/main/cyber_security_fortalecimento_rede)  
-  Estratégias de fortalecimento e segurança de infraestrutura de rede.  
+  Strategies to strengthen and secure network infrastructure.
 
-### 🌱 Ciência de Dados
-- [**data_science_dados_ambientais**](./https://github.com/ddqueiro/gestao_tecnologia_da_informacao/tree/main/data_science_dados_ambientais)  
-  Projeto de ciência de dados aplicado a bases ambientais.  
+### 🌱 Data Science
+- [**data_science_environmental_data**](./https://github.com/ddqueiro/gestao_tecnologia_da_informacao/tree/main/data_science_dados_ambientais)  
+  Data science project applied to environmental datasets. 
 
-### 🤖 Inteligência Artificial Explicável (XAI)
+### 🤖 Explainable Artificial Intelligence (XAI)
 - [**explainable_AI_(XAI)_lime_credit**](https://github.com/ddqueiro/gestao_tecnologia_da_informacao/tree/main/explainable_AI_(XAI)_lime_credit)  
-  Modelo de análise de crédito com **LIME** para interpretabilidade e explicabilidade.  
+  Credit analysis model using LIME to provide interpretability and explainability for machine learning predictions.
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
-Ao longo destes projetos, foram utilizadas ferramentas e conceitos como:  
+## 🛠️ Technologies Used
+Across these projects, the following tools and concepts were applied::  
 - **Python, SQL, MongoDB**  
-- **Bibliotecas de Ciência de Dados e Machine Learning** (Pandas, Scikit-learn, Matplotlib, Numpy)  
-- **Conceitos e práticas de Redes de Computadores**  
-- **Fundamentos de Cibersegurança**  
-- **Matemática Aplicada e Estatística**  
+- **Data Science and Machine Learning libraries (Pandas, Scikit-learn, Matplotlib, NumPy)** 
+- **Computer Networks concepts and practices**  
+- **Cybersecurity fundamentals**  
+- **Applied Mathematics and Statistics**  
 
 ---
 
-## 📫 Conecte-se comigo
+## 📫 Connect with Me
 🔗 [LinkedIn](https://www.linkedin.com/in/dannyellyqueiroz/)  
-
----
-
-✨ Este repositório é parte da minha jornada acadêmica e reflete meu desenvolvimento nas áreas de **Dados, Cloud, IA e Gestão de TI**.
+✨ Feel free to explore the projects and connect with me for collaboration or professional opportunities.
 ****
